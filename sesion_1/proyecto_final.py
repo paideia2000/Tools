@@ -94,11 +94,10 @@ def interfaz():  # Interfaz inicial del juego
     print("4- Para marcar la posición que quieres jugar dentro del tablero, deberás elegir uno de los números que se muestran visibles en las casillas e insertarlo cuando se te indique.")
 
 def ejecutar_juego():  # Invocará a las funciones "choice_pc" y "choice_ju" para que se ejecuten en orden. Verificará si hay un ganador o si hay un empate.
+    interfaz()
     while True:
         variables_globales()
-        interfaz()
         quien_empieza = input("\nPara que comience la PC inserté \"PC\", para que comiences tu inserté \"YO\" o \"FIN\" para salir.: ").strip().lower()
-        mostrar_display()
         if quien_empieza == "fin":
             print("\nEspero volver a jugar contigo pronto,\t¡ADIOS!.")
             break
@@ -114,6 +113,7 @@ def ejecutar_juego():  # Invocará a las funciones "choice_pc" y "choice_ju" par
                 if verificar_ganador():
                     break 
         elif quien_empieza == "yo":
+            mostrar_display()
             while True:
                 choice_ju()
                 if verificar_ganador():
