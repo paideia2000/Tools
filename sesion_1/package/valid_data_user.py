@@ -1,9 +1,14 @@
 def valid_name(prompt: str)-> str:
+    """ Name without number and special character """
     import re
+    
     while True:
+        
         name: str = input(prompt)
+        
         if name and not re.search(r'["!$%&/()=?¡¨*|123456789]', name):
             return name
+        
         else:
             print("\nERROR Check the field and try again.")
 
