@@ -1,0 +1,16 @@
+2025-03-24 16:56:04,931 - DEBUG - Entry into the function 'main' in the module '__main__'
+2025-03-24 16:56:04,931 - ERROR - Error in the function 'main'.
+Traceback (most recent call last):
+  File "/home/renepro/Renecito/Python/Curso_Cepi/sesion_1/poo/Curso_cepi/deco_logging.py", line 23, in wrapper
+    result = fun(*args,**kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/renepro/Renecito/Python/Curso_Cepi/sesion_1/poo/Curso_cepi/main.py", line 43, in main
+    p1 = Comparation("", 100, "Iphone 16", "Iphone")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/renepro/Renecito/Python/Curso_Cepi/sesion_1/poo/Curso_cepi/package/comparation.py", line 6, in __init__
+    super().__init__(punctuation, price, model, manufacturer, tipo)
+  File "/home/renepro/Renecito/Python/Curso_Cepi/sesion_1/poo/Curso_cepi/package/phones.py", line 12, in __init__
+    raise AttributeError("\n¡ERROR! The value of the attribute '(PUNCTUATION and PRICE)' must be a number.\n")
+AttributeError: 
+¡ERROR! The value of the attribute '(PUNCTUATION and PRICE)' must be a number.
+
