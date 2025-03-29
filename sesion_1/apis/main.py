@@ -3,31 +3,34 @@ import json
 from url import url, headers
 from deco_loggi import error_logs
 
-@error_logs()
+@error_logs
 def get_data_users(ENDPOINT: str)-> list:
     """ get data oh the users to the api JSONPlaceholder"""
     try:
         if ENDPOINT:
             response = req.get(ENDPOINT, timeout=5)
             response.raise_for_status()
-            try:
-                if response.status_code == 200:
-
-                    print(f"\nRequest successfully to the URL:'{ENDPOINT}'. Status Code:{response.status_code}.")
-                    return response.json()
-                else:
+            
+            if response.status_code == 200:
+                print(f"\nRequest successfully to the URL:'{ENDPOINT}'. Status Code:{response.status_code}.")
+                return response.json()
+            else:
                     print(f"Invalid Status Code: {response.status_code}")
-            except ValueError:
-                print(f"Error: The response from '{ENDPOINT}' is not valid JSON. The content might be HTML or another format.")
+        
         else:
             print("\n¡ERROR! Check the content of the (endpoint).")
-    
+    except req.exceptions.HTTPError:
+        print("Status Code Invalid")
+        raise
     except req.exceptions.JSONDecodeError:
         print("¡JSONDecodeError! Could not be decoded to json format\n")
+        raise
     except req.exceptions.ConnectionError:
         print("\n¡ConnectionError! Name or service not know. Please check it.\n")
+        raise
     except req.exceptions.Timeout:
         print("\n¡TimeoutError! Too much time has elapsed since the request was made\n")
+        raise
 
 def save_data_jsonfile(data_users: list, name_file: str)-> None:
     """ make file with the data of the users. """
@@ -137,11 +140,8 @@ def interface(ENDPOINT: str,PROMTP: str, HEADERS: dict) -> None:
                     break
                 else:
                     delete_data(ENDPOINT, HEADERS)
-
-            
-            
-    except ValueError as vl:
-        print("rene")
+    except Exception as exp:
+        print(exp)
 
 def main():
 
