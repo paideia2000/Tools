@@ -7,7 +7,7 @@ def method_get_api(ENDPOINT: str)-> list:
     """ get data oh the users to the api JSONPlaceholder"""
     try:
         if ENDPOINT:
-            response = req.get(ENDPOINT + "dsfvdv", timeout=5)
+            response = req.get(ENDPOINT, timeout=5)
             response.raise_for_status()
             
             if response.status_code == 200:
@@ -37,7 +37,7 @@ def method_post_api(ENDPOINT: str, HEADERS: dict ) ->None:
     data = {"name": "soy yoooo", "user": "lo dijo pinedom"}
     try:
         if ENDPOINT and HEADERS :
-            response = req.post(ENDPOINT, data=json.dumps(data), headers=HEADERS, timeout=5)
+            response = req.post(ENDPOINT, json=data, headers=HEADERS, timeout=5)
             response.raise_for_status()
             
             if response.status_code == 201:
@@ -59,7 +59,7 @@ def method_patch_api(ENDPOINT: str, HEADERS: dict) ->None:
     data = {"body":"change the body","name":"rene medina", "email": "poencima22@gmail.com"}
     try:
         if ENDPOINT and HEADERS :
-            response = req.patch(ENDPOINT+"/1", data=json.dumps(data) ,headers=HEADERS, timeout=5)
+            response = req.patch(ENDPOINT+"/1", json=data ,headers=HEADERS, timeout=5)
             response.raise_for_status()
             
             if response.status_code == 200:
@@ -69,9 +69,9 @@ def method_patch_api(ENDPOINT: str, HEADERS: dict) ->None:
         else:
             print("\n¡ERROR! Check the content of the (endpoint) or (headers).")
     
-    except req.exceptions.ConnectionError as cnxe:
+    except req.exceptions.ConnectionError:
         print("\n¡ConnectionError! Name or service not know. Please check it.\n")
-    except req.exceptions.Timeout as tm:
+    except req.exceptions.Timeout:
         print("\n¡TimeoutError! Too much time has elapsed since the request was made\n")
 
 def method_delete_api(ENDPOINT: str, HEADERS: dict) -> None:
@@ -101,7 +101,7 @@ def main():
     HEADERS = headers()
     try:
         
-        method_get_api(ENDPOINT)
+        #method_get_api(ENDPOINT)
         # method_post_api(ENDPOINT,HEADERS)
         # method_patch_api(ENDPOINT,HEADERS)
         # method_delete_api(ENDPOINT,HEADERS)

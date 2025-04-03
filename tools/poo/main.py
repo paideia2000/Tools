@@ -1,5 +1,5 @@
 from package.comparation import Comparation
-from deco_logging import log_anything
+from t_logging import log_debug
 
 def check_who_is_better(disp_1: Comparation, disp_2: Comparation) -> str:
     """ return that phone is better using de magic method (gt-lt) """
@@ -9,10 +9,8 @@ def check_who_is_better(disp_1: Comparation, disp_2: Comparation) -> str:
         return f"\n The better phone is: {disp_2.manufacturer}, with their model: {disp_2.model}.\n"
     else:
         return "\n The two phones have the same ralation price-quality"
-        
-
-
-@log_anything()
+    
+@log_debug()
 def check_who_is_better(disp_1: Comparation, disp_2: Comparation) -> str:
     """ return that phone is better using de magic method (gt-lt) """
     if isinstance(disp_1, Comparation) and isinstance(disp_2, Comparation):
@@ -24,7 +22,7 @@ def check_who_is_better(disp_1: Comparation, disp_2: Comparation) -> str:
         else:
             return "\nThe two phones have the same ralation price-quality"
 
-@log_anything()
+@log_debug()
 def order_by(list_phones: list, prompt: str) ->None:
     """ Order the phones by punctation or Price """
     while True:
@@ -68,26 +66,3 @@ def main():
     
 if __name__=="__main__":
     main()
-
-@log_anything()
-def main():
-    PROMPT = "Sort the phone list by rating (S) or price (P): "
-
-    p1 = Comparation(10, 100, "Iphone 16", "Iphone")
-    p2 = Comparation(5, 110, "Samsung s24", "Samsung")
-    p3 = Comparation(8, 200, "Huawey tuf 15", "Huawey")
-    p4 = Comparation(7, 220, "Xiamo Hierro 3", "Xiaomi")
-    list_phones = [p1,p2,p3,p4]
-
-    print(check_who_is_better(p1,p2))
-    
-    order_by(list_phones,PROMPT)
-
-if __name__=="__main__":
-    try:
-        main()
-    
-    except AttributeError as at:
-        print(at)  
-    except ValueError as vl:
-        print(vl)
