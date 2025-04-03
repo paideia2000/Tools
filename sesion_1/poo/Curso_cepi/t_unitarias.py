@@ -1,6 +1,7 @@
+import unittest
 from main import check_who_is_better
 from package import comparation, phones
-import unittest
+
 
 class TestComparation_class(unittest.TestCase):
     def test_return_ValueError(self):
