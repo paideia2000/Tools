@@ -1,9 +1,0 @@
-2025-03-28 22:09:27,343 - ERROR - Error in function 'get_data_users': HTTPSConnectionPool(host='jsonplaceholder.typicode.com', port=443): Read timed out. (read timeout=0.1)
-2025-03-28 22:10:48,172 - ERROR - Error in function 'get_data_users': ConnectionError
-2025-03-28 22:10:48,173 - ERROR - Error in function 'get_data_users': HTTP Error
-2025-03-28 22:12:31,179 - ERROR - Error in function 'get_data_users': ConnectionError
-2025-03-28 22:12:31,180 - ERROR - Error in function 'get_data_users': HTTP Error
-2025-03-28 22:13:11,516 - ERROR - Error in function 'get_data_users': ConnectionError
-2025-03-28 22:13:11,517 - ERROR - Error in function 'get_data_users': HTTP Error
-2025-03-28 22:13:27,906 - ERROR - Error in function 'get_data_users': ConnectionError
-2025-03-28 22:13:27,908 - ERROR - Error in function 'get_data_users': HTTP Error

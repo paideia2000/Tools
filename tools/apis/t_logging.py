@@ -18,6 +18,6 @@ def error_logs(func):
         try:
             return func(*args, **kwargs)
         except Exception as e:
-            logging.error(f"Function '{func.__name__}' in the module '{func.__module__}', ERROR: {str(e)}")
+            logging.error(f"Function '{func.__name__}', ERROR: {str(e)}")
             raise  # Vuelve a lanzar la excepción después de registrarla
     return wrapper

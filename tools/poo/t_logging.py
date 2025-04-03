@@ -2,7 +2,7 @@ import logging
 from functools import wraps
 import os
 
-def log_anything(path_file="poo/Curso_cepi/logs/logs.log"):
+def log_debug(path_file="tools/poo/logs/logs.log"):
     
     name_dir = os.path.dirname(path_file)
     if name_dir and not os.path.exists(name_dir):
@@ -10,7 +10,6 @@ def log_anything(path_file="poo/Curso_cepi/logs/logs.log"):
     
     logging.basicConfig(filename=path_file, 
                         level=logging.DEBUG,
-                        filemode="w",
                         format = ('%(asctime)s - %(levelname)s - %(message)s')
                         )
 
