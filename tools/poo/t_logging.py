@@ -27,8 +27,6 @@ def log_debug(path_file="tools/poo/logs/logs.log"):
                 logging.error(f"Error in the function '{fun.__name__}'.", exc_info = True)
                 raise 
             
-        
         return wrapper
-    
     return decorator
 
