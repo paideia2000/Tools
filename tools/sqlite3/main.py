@@ -3,10 +3,13 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 
+<<<<<<< HEAD
 def connection_db(path):
     """  """
     return sql.connect(path)
 
+=======
+>>>>>>> zp_1
 def select(path = None, 
         name_table = None, 
         filterrr = None
@@ -112,6 +115,9 @@ def main():
     except Exception as ex:
         print(f"\nAn error ocurred: {ex}\n")
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> zp_1
 if __name__=="__main__":
     main()
