@@ -102,7 +102,7 @@ def main():
     
     try:
         pass
-        # create_file(PATH_TXT, CONTENT)
+        #create_file(PATH_TXT, CONTENT)
         # write_json(PATH_JSON, CONTENT)
         # write_bin(PATH_BIN, CONTENT)
         # read_txt(PATH_TXT)
@@ -112,7 +112,6 @@ def main():
         
     except Exception as e:
         print(f"An error ocurred: {e}\n")
-
 
 if __name__ == "__main__":
     main()
