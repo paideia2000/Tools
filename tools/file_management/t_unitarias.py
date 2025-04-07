@@ -75,8 +75,8 @@ class Test_Read_Txt(unittest.TestCase):
         with patch("sys.stdout", new=io.StringIO()):
             result = read_txt(name_file)
 
-        #check if content returned is a string
-        self.assertIsInstance(result, str)
+            #check if content returned is a string
+            self.assertIsInstance(result, str)
         mock_open_file.assert_called_once_with(name_file, "r")
         
 class Test_Read_Json(unittest.TestCase):
