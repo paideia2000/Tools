@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import patch, Mock
 import requests as req
 from io import StringIO
-from main import method_get_api 
+from main import method_get_api
 
 class TestGetDataUsers(unittest.TestCase):
     ENDPOINT = "https://jsonplaceholder.typicode.com/users"
@@ -11,6 +11,7 @@ class TestGetDataUsers(unittest.TestCase):
     @patch("main.req.get")  # 🔄 Evita que se le haga request.get a la api real y lo redirige a la api_fake
     def test_get_data_users_returns_list(self, fake_api):
         """✅ Verifica que method_get_api() retorne una lista"""
+        
         with patch("sys.stdout", new=StringIO()):
             mock_response = Mock()  # Simulamos la respuesta de la API
             mock_response.status_code = 200
@@ -24,6 +25,7 @@ class TestGetDataUsers(unittest.TestCase):
     def test_get_data_users_http_error(self, fake_api):
         """❌ Prueba cuando la API responde con un error HTTP"""
         fake_api.side_effect = req.exceptions.HTTPError("HTTP Error")  # Simulamos un error HTTP
+        
         with patch("sys.stdout", new=StringIO()):
             with self.assertRaises(req.exceptions.HTTPError):  # Esperamos que la función lance un HTTPError
                 method_get_api(self.ENDPOINT)
