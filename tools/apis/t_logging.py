@@ -1,8 +1,7 @@
 import logging
-import requests as req
 from functools import wraps
 
-path: str = "apis/log/logs.log"
+path: str = "tools/apis/log/logs.log"
 
 # Configuración del logging
 logging.basicConfig(

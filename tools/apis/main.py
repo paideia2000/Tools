@@ -48,6 +48,8 @@ def method_post_api(ENDPOINT: str, HEADERS: dict ) ->None:
         else:
             print("\n¡ERROR! Check the content of the (endpoint) or (headers).")
     
+    except req.exceptions.HTTPError as ht:
+        print("\n",ht,"\n")
     except req.exceptions.ConnectionError:
         print("\n¡ConnectionError! Name or service not know. Please check it.\n")
     except req.exceptions.Timeout:
@@ -68,7 +70,9 @@ def method_patch_api(ENDPOINT: str, HEADERS: dict) ->None:
             
         else:
             print("\n¡ERROR! Check the content of the (endpoint) or (headers).")
-    
+        
+    except req.exceptions.HTTPError as ht:
+        print("\n",ht,"\n")
     except req.exceptions.ConnectionError:
         print("\n¡ConnectionError! Name or service not know. Please check it.\n")
     except req.exceptions.Timeout:
@@ -79,8 +83,8 @@ def method_delete_api(ENDPOINT: str, HEADERS: dict) -> None:
     
     params = {"body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"}
     try:
-        if ENDPOINT and HEADERS :
-            response = req.delete(ENDPOINT, params=params,headers=HEADERS, timeout=5)
+        if ENDPOINT and HEADERS:
+            response = req.delete(ENDPOINT, params=params, headers=HEADERS, timeout=5)
             response.raise_for_status()
             
             if response.status_code == 200:
@@ -90,6 +94,8 @@ def method_delete_api(ENDPOINT: str, HEADERS: dict) -> None:
         else:
             print("\n¡ERROR! Check the content of the (endpoint) or (headers).")
     
+    except req.exceptions.HTTPError as ht:
+        print("\n",ht,"\n")
     except req.exceptions.ConnectionError:
         print("\n¡ConnectionError! Name or service not know. Please check it.\n")
     except req.exceptions.Timeout:
@@ -101,14 +107,12 @@ def main():
     HEADERS = headers()
     try:
         
-        #method_get_api(ENDPOINT)
+        # method_get_api(ENDPOINT)
         # method_post_api(ENDPOINT,HEADERS)
         # method_patch_api(ENDPOINT,HEADERS)
         # method_delete_api(ENDPOINT,HEADERS)
         pass
     
-    except req.exceptions.HTTPError as ht:
-        print("\n",ht,"\n")
     except Exception as exp:
         print(exp)
 
