@@ -1,28 +1,34 @@
 import logging
-import os
 from functools import wraps
+import os
 
-def log_error(PATH = "sqlite3/log/log.log"):
+def log_error(PATH = "tools/sqlite3/log/logs.log"):
+    """ creating the log format """
     
-    mk_direc: str = os.path.dirname(PATH)
-    if mk_direc and not os.path.exists(mk_direc):
-        os.mkdir(mk_direc)
+    path_name = os.path.dirname(PATH)
+    if path_name and not os.path.exists(path_name):
+        os.mkdir(path_name)
+        
+    logging.basicConfig(
+                filename=PATH,
+                level=logging.ERROR,
+                format = ('%(asctime)s - %(levelname)s - %(message)s')
+                )
 
-    logging.basicConfig(filename=PATH, 
-                        level=logging.ERROR,
-                        format=('%(asctime)s - %(levelname)s  - %(message)s' )
-                        )
-    
-    def decorator(fun):
+    def decorator(fun: callable) -> callable:
         @wraps(fun)
-        def wrapper(*arg, **kwargs):
+        def wrapper(*args, **kwargs) -> callable:
             
             try:
-                get_data = fun(*arg, **kwargs)
-                return get_data
-            except  Exception as ex:
-                logging.error(f"In the function: '{fun.__name__}()', an error ocurred: {ex}", exc_info=True)
+                
+                logging.debug(f"Entry into the function '{fun.__name__}' in the module '{fun.__module__}'")
+                result = fun(*args,**kwargs)
+                logging.info(f"Correct execution of the function '{fun.__name__}.'")
+                return result
+            
+            except Exception:
+                logging.error(f"The error ocurred in the funtion '{fun.__name__}', in the module '{fun.__module__}'", exc_info=True)
                 raise
-    
+            
         return wrapper
     return decorator

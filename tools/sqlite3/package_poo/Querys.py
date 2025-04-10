@@ -46,7 +46,7 @@ class SelectQuery(Interface):
                 data = cursor.fetchall()
                 
                 df = pd.DataFrame(data)
-                print(df)
+                print("\n",df)
         
         except pd.errors.DatabaseError as pd_error:
             raise pd_error

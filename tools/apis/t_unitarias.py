@@ -34,6 +34,7 @@ class TestGetDataUsers(unittest.TestCase):
     @patch("main.req.get")
     def test_get_data_users_connectionerror(self, fake_api):
         """ test when the connection fails """
+        
         fake_api.side_effect = req.exceptions.ConnectionError("ConnectionError")
         with patch("sys.stdout", new=StringIO()):
             with self.assertRaises(req.exceptions.ConnectionError):
