@@ -59,9 +59,9 @@ def get_data_INSERT() -> tuple:
     except Exception as ex:
         raise ex
 
-def execute_UPDATE() -> str | tuple:
+def get_data_UPDATE(COLUMN) -> str | tuple:
     """ execute the option 3 that is update users data to the database """
-    COLUMN = ["id", "name", "email", "country", "age"]
+    
     
     try:
         while True:
@@ -160,7 +160,7 @@ def get_choise_admin(PROMPT: str, conex: callable, COLUMNS: list[str]) -> None:
                 break
                 
             if number == 3:
-                name_column, new_data_user = execute_UPDATE()
+                name_column, new_data_user = get_data_UPDATE(COLUMNS)
                 update =UpdateQuery()
                 update.execute_query(conex.connection(), name_column, new_data_user)
                 break
@@ -192,7 +192,7 @@ def interface_user() -> None:
 
 def main():
     
-    COLUMNS = ["id", "name", "email", "country", "age", "*"]
+    COLUMNS = ["id", "name", "email", "country", "age", "*", "city"]
     conex: object = ConnectionPool("localhost", "root", "Derrickrose1?", "users")#objet oh the class Connection that stablish connection with the pool connection
     
     interface_user()#show the user interface
