@@ -2,12 +2,13 @@ import re
 from mysql.connector import  Error
 from package_poo.Querys import CreateTableQuery, SelectQuery, InsertQuery, UpdateQuery, DeleteQuery
 from package_poo.GetConnection import ConnectionPool
+from t_logging import log_error
 
 def get_data_CREATETABLE() -> str:
     """ execute query create table """
     try:
         while True:
-            name_table = input("\nPlease insert the name table: ").strip().lower()#get table name
+            name_table = input("\nEnter the name of the table to create: ").strip().lower()#get table name
             
             if re.search(r'\b[A-Za-z]{2,}\b', name_table):
                 return name_table
@@ -62,7 +63,6 @@ def get_data_INSERT() -> tuple:
 def get_data_UPDATE(COLUMN) -> str | tuple:
     """ execute the option 3 that is update users data to the database """
     
-    
     try:
         while True:
             name_column = input("\nEnter the column name: ").strip().lower()
@@ -86,9 +86,9 @@ def get_data_UPDATE(COLUMN) -> str | tuple:
             else:
                 print(f"The value '{user_id}' is incorrect")
             
-        new_data = (new_value,user_id)
+        new_data: tuple = (new_value,user_id)
         
-        if isinstance(new_data, tuple) and name_column:
+        if isinstance(new_data, tuple) and isinstance(name_column, str):
             return name_column, new_data
         else:
             raise ValueError("Some of the data is invalid")
@@ -142,7 +142,8 @@ def get_data_SELECT(COLUMN) -> str:
         except Exception as ex :
             raise ex
 
-def get_choise_admin(PROMPT: str, conex: callable, COLUMNS: list[str]) -> None:
+@log_error()
+def get_choise_1_to_5(PROMPT: str, conex: callable, COLUMNS: list[str]) -> None:
     """ get the option of the user want execute """
     while True:
         try:
@@ -180,8 +181,8 @@ def get_choise_admin(PROMPT: str, conex: callable, COLUMNS: list[str]) -> None:
 
         except ValueError:
             print("\n¡ERROR! You need into a integer value. Please try again.")
-        except Exception as exp:
-            print(f"\nAn error ocurred: {exp}")
+        except Exception as ex:
+            raise ex
 
 def interface_user() -> None:
     """ Interface of the users """
@@ -192,11 +193,16 @@ def interface_user() -> None:
 
 def main():
     
-    COLUMNS = ["id", "name", "email", "country", "age", "*", "city"]
-    conex: object = ConnectionPool("localhost", "root", "Derrickrose1?", "users")#objet oh the class Connection that stablish connection with the pool connection
+    try:
+        
+        COLUMNS = ["id", "name", "email", "country", "age", "*", "city"]
+        conex: object = ConnectionPool("localhost", "root", "Derrickrose1?", "users")#objet oh the class Connection that stablish connection with the pool connection
+        
+        interface_user()#show the user interface
+        get_choise_1_to_5("\nWhich option do you want to perform: ", conex, COLUMNS)
     
-    interface_user()#show the user interface
-    get_choise_admin("\nWhich option do you want to perform: ", conex, COLUMNS)
+    except Exception as exp:
+        print(f"\nAn error ocurred: {exp}")
 
 if __name__=="__main__":
     main()

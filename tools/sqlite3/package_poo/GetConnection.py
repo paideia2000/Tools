@@ -1,51 +1,55 @@
-import sys
 from mysql.connector import Error
-from contextlib import contextmanager
 import mysql.connector
+from contextlib import contextmanager
+import sys
 
 class ConnectionPool:
-    def __init__(self, hostname, user, password, database, pool_name="mypool", pool_size=5):
-        self.__hostname = hostname
-        self.__user = user
+    def __init__(self, hostname, username, password, database, pool_name = "poolconex", pool_size = 5):
+        self.__hostame = hostname
+        self.__username = username
         self.__password = password
         self.__database = database
         self.__pool_name = pool_name
         self.__pool_size = pool_size
-        self.__pool = self.__create_pool()
-        
-    def __create_pool(self):
-        """Create and return a connection pool"""
+        self.__pool = self.__createpool()
+    
+    def __createpool(self):
+        """ makeing a pool connection """
         try:
             pool = mysql.connector.pooling.MySQLConnectionPool(
-                pool_name=self.__pool_name,
-                pool_size=self.__pool_size,
-                host=self.__hostname,
-                user=self.__user,
-                password=self.__password,
-                database=self.__database
+                pool_name = self.__pool_name,
+                pool_size = self.__pool_size,
+                host = self.__hostame,
+                user = self.__username,
+                password = self.__password,
+                database = self.__database
             )
             return pool
-        
-        except Error as e:
-            print(f"Error creating connection pool: {e}")
-            raise
             
+        except Error as e:
+            error_mesg = f"Error creating connection pool: {e}"
+            raise type(e)(error_mesg) from e
+    
     @contextmanager
     def connection(self):
-        """Get a connection from the pool"""
-        conn = None
+        """ stablished the connection with the pool """
+        
+        connex = None
         try:
             
-            conn = self.__pool.get_connection()
-            yield conn
-        
+            connex = self.__pool.get_connection()
+            
+            yield connex
+
         except Error as e:
-            raise e
+            error_mesg = f"Error creating connection pool: {e}"
+            raise type(e)(error_mesg) from e
+    
+        
         finally:
-            if conn and conn.is_connected():
-                conn.close()  # Esto devuelve la conexión al pool
+            if connex and connex.is_connected():
+                connex.close()
 
-
-if __name__ == "__main__":
-    print("\nDon't execute this script directly.")
+if __name__=="__main__":
+    print("Don't execute this script")
     sys.exit()
