@@ -1,0 +1,32 @@
+/* 3 - styles css in file extern */
+
+h1{
+    color: blueviolet;
+    font-size: 50px;
+}
+
+body{
+    background-color: black;
+    color: white;
+}
+
+p{
+    font-size: 50px;
+}
+
+a{
+    font-size: 30px;
+    color: blueviolet;
+}
+a:hover{
+    color: yellow;
+}
+
+/* class or selectores in css */
+
+.center{
+    text-align: center;
+}
+.title{
+    font-size: 300%;
+}
