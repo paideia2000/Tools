@@ -21,6 +21,7 @@ class CreateTableQuery(Interface):
                     name VARCHAR(50) NOT NULL,
                     age INT NOT NULL,
                     country VARCHAR(50),
+                    city VARCHAR(50) NOT NULL,
                     email VARCHAR(100) NOT NULL UNIQUE,
                     PRIMARY KEY (id)
                     ); """
