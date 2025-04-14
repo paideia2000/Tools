@@ -1,0 +1,20 @@
+/* styles for all page */
+
+
+body{
+    background-color: black;
+    color: white;
+}
+
+h1{
+        color: blueviolet;
+        font-size: 50px;
+}
+h2{
+    color: yellow;
+    font-size: 40px;
+}
+
+p{color: white;
+    font-size: 30px;
+}
