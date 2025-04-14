@@ -2,7 +2,8 @@ from django.urls import path
 from . import views as v
 
 urlpatterns = [
-    path("", v.page_1),
-    path("u/", v.show_users),
-    path("t/<int:id>", v.show_task),
+    path("", v.home_page),
+    path("user/", v.show_users),
+    path("task/", v.show_task),
+    path("new_task/", v.new_task)
 ]

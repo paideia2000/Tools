@@ -1,0 +1,35 @@
+/* styles for all page */
+
+
+body{
+    background-color: black;
+    color: white;
+}
+
+h1{
+        color: blueviolet;
+        font-size: 50px;
+}
+h2{
+    color: yellow;
+    font-size: 40px;
+}
+
+p{color: white;
+    font-size: 30px;
+}
+
+
+.mi-boton {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Suaviza el cambio de color */
+}
+
+.mi-boton:hover {
+    background-color: darkblue; /* Cambia el color al pasar el cursor */
+}
