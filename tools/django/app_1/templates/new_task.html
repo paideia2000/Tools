@@ -39,7 +39,12 @@
 </head>
 <body>
     <h1 style="text-align: center; font-size: 50px;">CREATE NEW TASK</h1>
-
-    {{ form }}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>
+            Save
+        </button>
+    </form>
 </body>
 </html>
