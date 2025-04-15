@@ -27,8 +27,8 @@ class ConnectionPool:
             return pool
             
         except Error as e:
-            error_mesg = f"Error creating connection pool: {e}"
-            raise type(e)(error_mesg) from e
+            error_msg = f"Error creating connection pool: {e}"
+            raise type(e)(error_msg) from e
     
     @contextmanager
     def connection(self):
@@ -42,8 +42,8 @@ class ConnectionPool:
             yield connex
 
         except Error as e:
-            error_mesg = f"Error creating connection pool: {e}"
-            raise type(e)(error_mesg) from e
+            error_msg = f"Error creating connection pool: {e}"
+            raise type(e)(error_msg) from e
     
         
         finally:

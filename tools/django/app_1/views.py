@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Users, Task
 from .forms import CreatNewTask
 
@@ -23,7 +23,23 @@ def show_task(request):
     })
 
 def new_task(request):
-    return render(request,'new_task.html',{
-        'form': CreatNewTask()
+    if request.method == "GET":
+        return render(request,'new_task.html',{
+            'form': CreatNewTask()
+        })
+    else:
+
+        form = CreatNewTask(request.POST)
+        if form.is_valid():
+            Task.objects.create(
+                title=request.POST["title"], 
+                description=request.POST["description"], 
+                project_id = 6)
+            return redirect("/")
+        else:
+            return render(request, "new_task.html",{
+                'form': form
+                
+            })
         
-    })
+

@@ -39,7 +39,37 @@
 </head>
 <body>
     <h1 style="text-align: center; font-size: 50px;">CREATE NEW TASK</h1>
+    <form method="POST">
+        {% csrf_token %}
 
-    {{ form }}
+        <!-- title fielf -->
+        <div class="mb-3">
+            <label for="id_title" class="form-label">Title</label>
+            {{ form.title }}
+            {% if form.title.errors %}
+                <div class="text-danger mt-1">
+                    {% for error in form.title.errors %}
+                    <small>{{ error }}</small><br>
+                {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <!-- description fiel -->
+        <div class="mb-3">
+            <label for="id_description" class="form-label">Descripción</label>
+            {{ form.description }}
+            {% if form.description.errors %}
+                <div class="text-danger mt-1">
+                    {% for error in form.description.errors %}
+                        <small>{{ error }}</small><br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary" >Create task</button>
+
+    </form>
 </body>
 </html>
