@@ -7,7 +7,7 @@ def method_get_api(ENDPOINT: str)-> list:
     """ get data oh the users to the api JSONPlaceholder"""
     try:
         if ENDPOINT:
-            response = req.get(ENDPOINT, timeout=5)
+            response = req.get(ENDPOINT , timeout=0.1)
             response.raise_for_status()
             
             if response.status_code == 200:
@@ -18,18 +18,19 @@ def method_get_api(ENDPOINT: str)-> list:
         
         else:
             print("\n¡ERROR! Check the content of the (endpoint).")
-    except req.exceptions.HTTPError:
-        print("Status Code Invalid")
-        raise
-    except req.exceptions.JSONDecodeError:
-        print("¡JSONDecodeError! Could not be decoded to json format\n")
-        raise
-    except req.exceptions.ConnectionError:
-        print("\n¡ConnectionError! Name or service not know. Please check it.\n")
-        raise
-    except req.exceptions.Timeout:
-        print("\n¡TimeoutError! Too much time has elapsed since the request was made\n")
-        raise
+            
+    except req.exceptions.HTTPError as hhtperror:
+        error_msg1 = "Status Code Invalid"
+        raise type(hhtperror)(error_msg1) from hhtperror
+    except req.exceptions.JSONDecodeError as jsonerror:
+        error_msg2 = "¡JSONDecodeError! Could not be decoded to json format"
+        raise type(jsonerror)(error_msg2) from jsonerror
+    except req.exceptions.ConnectionError as connecterror:
+        error_msg3 = "¡ConnectionError! Name or service not know. Please check it."
+        raise type(connecterror)(error_msg3) from connecterror
+    except req.exceptions.Timeout as timouterror:
+        error_msg4 = "¡TimeoutError! Too much time has elapsed since the request was made"
+        raise type(timouterror)(error_msg4) from timouterror
 
 def method_post_api(ENDPOINT: str, HEADERS: dict ) ->None:
     """ make a post request to the api """
@@ -107,14 +108,14 @@ def main():
     HEADERS = headers()
     try:
         
-        # method_get_api(ENDPOINT)
+        method_get_api(ENDPOINT)
         # method_post_api(ENDPOINT,HEADERS)
         # method_patch_api(ENDPOINT,HEADERS)
         # method_delete_api(ENDPOINT,HEADERS)
         pass
     
     except Exception as exp:
-        print(exp)
+        print(f"\nAn error ocurred: {exp}\n")
 
 if __name__=="__main__":
     main()

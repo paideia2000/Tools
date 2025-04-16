@@ -22,14 +22,25 @@ def show_task(request):
         
     })
 
+
 def new_task(request):
     if request.method == "GET":
         return render(request,'new_task.html',{
             'form': CreatNewTask()
         })
     else:
-        Task.objects.create(title=request.POST["title"], description=request.POST["description"], project_id = 6)
-        return redirect("/saved")
 
-def saved(request):
-    return render(request, "saved.html")
+        form = CreatNewTask(request.POST)
+        if form.is_valid():
+            Task.objects.create(
+                title=request.POST["title"], 
+                description=request.POST["description"], 
+                project_id = 6)
+            return redirect("home")
+        else:
+            return render(request, "new_task.html",{
+                'form': form
+                
+            })
+        
+
