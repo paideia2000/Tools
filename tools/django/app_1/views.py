@@ -29,4 +29,7 @@ def new_task(request):
         })
     else:
         Task.objects.create(title=request.POST["title"], description=request.POST["description"], project_id = 6)
-        return redirect("/")
+        return redirect("/saved")
+
+def saved(request):
+    return render(request, "saved.html")
