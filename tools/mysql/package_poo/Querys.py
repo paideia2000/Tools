@@ -35,7 +35,7 @@ class CreateTableQuery(Interface):
 
 class SelectQuery(Interface):
     
-    def execute_query(cls, connection, filter_by: str, name_table: str) -> None:
+    def execute_query(self, connection, filter_by: str, name_table: str) -> None:
         """ Execute the query SELECT """
     
         try:

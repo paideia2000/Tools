@@ -131,10 +131,10 @@ def get_data_SELECT(COLUMN) -> str:
 
     while True:
         try:
-            name_table: str = input("\nInserte the name table ->: ").strip().lower()
+            name_table: str = input("\nInserte the name table ->: ").strip()
             name_colums: str = input("Inserte the name of the columns ->: ").strip().lower()
             
-            if re.fullmatch(r'[A-Za-z]+', name_table) and name_colums in COLUMN:
+            if re.fullmatch(r'[A-Za-z_]+', name_table) and name_colums in COLUMN:
                 return name_table, name_colums
             else:
                 print(f"\n¡ERROR! The column named '{name_colums}' does not exist")
@@ -196,7 +196,7 @@ def main():
     try:
         
         COLUMNS = ["id", "name", "email", "country", "age", "*", "city"]
-        conex: object = ConnectionPool("localhost", "root", "Derrickrose1?", "users")#objet oh the class Connection that stablish connection with the pool connection
+        conex: object = ConnectionPool("localhost", "root", "Derrickrose1?", "Northwind")#objet oh the class Connection that stablish connection with the pool connection
         
         interface_user()#show the user interface
         get_choise_1_to_5("\nWhich option do you want to perform: ", conex, COLUMNS)
