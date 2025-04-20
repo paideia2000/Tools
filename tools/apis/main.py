@@ -7,7 +7,7 @@ def method_get_api(ENDPOINT: str)-> list:
     """ get data oh the users to the api JSONPlaceholder"""
     try:
         if ENDPOINT:
-            response = req.get(ENDPOINT , timeout=0.1)
+            response = req.get(ENDPOINT , timeout=5)
             response.raise_for_status()
             
             if response.status_code == 200:

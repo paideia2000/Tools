@@ -2,7 +2,7 @@ import logging
 from functools import wraps
 import os
 
-def log_error(PATH = "tools/sqlite3/log/logs.log"):
+def log_error(PATH = "tools/mysql/log/logs.log"):
     """ creating the log format """
     
     path_name = os.path.dirname(PATH)
