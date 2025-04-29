@@ -5,7 +5,7 @@ logging.basicConfig(level=logging.INFO, format = ('%(levelname)s - %(threadName)
 
 
 
-def sumar(a: int, b:int) ->None:
+def sumar(a: int, b:int) -> None:
     """ sum two numbers """
     logging.info("Execute the funtion 'sumar'")
     print(a+b)

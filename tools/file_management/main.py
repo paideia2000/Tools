@@ -72,7 +72,8 @@ def read_json(PATH_JSON) -> None:
         return content
             
     except IsADirectoryError as isa:
-            raise isa
+        error_message = str(isa)
+        raise type(isa)(error_message) from isa
 
     except FileNotFoundError as fnf:
             raise fnf
