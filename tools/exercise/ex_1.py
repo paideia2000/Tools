@@ -10,7 +10,7 @@ def sum_numb_list(lis_number: list[int]) -> int:
         if isinstance(lis_number, list):
             if all(isinstance(num, int) for num in lis_number):
                 
-                result_sum = reduce(lambda x, y: x + y, lis_number)
+                result_sum: int = reduce(lambda x, y: x + y, lis_number)
                 
                 return result_sum
             
@@ -28,7 +28,7 @@ def sum_numb_list(lis_number: list[int]) -> int:
 
 def main():
     
-    list_number = list(range(1,21))
+    list_number: list = list(range(1,21))
     
     try:
         
