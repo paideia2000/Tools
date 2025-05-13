@@ -12,13 +12,13 @@ def calculate_are_poligono(POLIGONO: dict) -> int | float:
         
         result_area_cuadrado = POLIGONO["cuadrado"]["lado"] ** 2
         
-        return f"The area of the cuadrado is {result_area_cuadrado}"
+        return f"The square area is {result_area_cuadrado}"
         
     if "rectangulo" in POLIGONO.keys():
         
         result_area_rectangulo = POLIGONO["rectangulo"]["base"] * POLIGONO["rectangulo"]["altura"]
         
-        return f"The area of the cuadrado is {result_area_rectangulo}"
+        return f"The area of ​​the rectangle is {result_area_rectangulo}"
 
 
 
