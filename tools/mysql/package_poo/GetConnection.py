@@ -14,7 +14,7 @@ class ConnectionPool:
         self.__pool = self.__createpool()
     
     def __createpool(self):
-        """ makeing a pool connection """
+        """ create a pool connection """
         try:
             pool = mysql.connector.pooling.MySQLConnectionPool(
                 pool_name = self.__pool_name,
