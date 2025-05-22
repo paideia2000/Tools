@@ -62,7 +62,5 @@ class Test_fibonacci(unittest.TestCase):
             self.assertEqual(suce_fibonacci(""), "ERROR: Please check the content of the varibales")
 
 
-
-
 if __name__=="__main__":
     unittest.main()

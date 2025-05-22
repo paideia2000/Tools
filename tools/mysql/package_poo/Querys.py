@@ -101,7 +101,7 @@ class DeleteQuery(Interface):
                 conex.commit()
                 print(f"\nThe data was deleted successfully. Amount row(s) affected '{cursor.rowcount}'.\n")
         except Error as er:
-            raise er
+            raise type(er) from er
 
 if __name__=="__main__":
     print("\nDont execute this script.")
