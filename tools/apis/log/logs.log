@@ -1,0 +1,48 @@
+2025-05-23 12:34:11,407 - ERROR -  ¡ConnectionError! Name or service not know. Please check it., in the function 'method_get_api'
+Traceback (most recent call last):
+  File "/home/renepro/Renecito/Python/Avanced/tools/apis/main.py", line 10, in method_get_api
+    response = req.get(ENDPOINT , timeout=5)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1134, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1138, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1193, in _execute_mock_call
+    raise effect
+requests.exceptions.ConnectionError: ConnectionError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/renepro/Renecito/Python/Avanced/tools/apis/t_logging.py", line 18, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/renepro/Renecito/Python/Avanced/tools/apis/main.py", line 30, in method_get_api
+    raise type(connecterror)(error_msg3) from connecterror
+requests.exceptions.ConnectionError: ¡ConnectionError! Name or service not know. Please check it.
+2025-05-23 12:34:11,411 - ERROR -  Status Code Invalid, in the function 'method_get_api'
+Traceback (most recent call last):
+  File "/home/renepro/Renecito/Python/Avanced/tools/apis/main.py", line 10, in method_get_api
+    response = req.get(ENDPOINT , timeout=5)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1134, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1138, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1193, in _execute_mock_call
+    raise effect
+requests.exceptions.HTTPError: HTTP Error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/renepro/Renecito/Python/Avanced/tools/apis/t_logging.py", line 18, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/renepro/Renecito/Python/Avanced/tools/apis/main.py", line 24, in method_get_api
+    raise type(hhtperror)(error_msg1) from hhtperror
+requests.exceptions.HTTPError: Status Code Invalid

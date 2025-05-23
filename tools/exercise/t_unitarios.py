@@ -1,4 +1,6 @@
 import unittest
+from io import StringIO
+from unittest.mock import patch
 
 
 class Test_ex_1(unittest.TestCase):
@@ -60,6 +62,33 @@ class Test_fibonacci(unittest.TestCase):
         with self.assertRaises(TypeError):
             
             self.assertEqual(suce_fibonacci(""), "ERROR: Please check the content of the varibales")
+
+
+
+class Test_Fcatorial_Recursive(unittest.TestCase):
+    from factorial_recursive import factorial
+    
+    @patch("factorial_recursive.factorial")
+    def test_returned_a_number(self, fake_function):
+        """ check that function retorned a number """
+        
+        fake_function.return_value = 120
+        
+        result = fake_function(5)
+        
+        self.assertIsInstance(result, int)
+    
+    @patch("factorial_recursive.factorial")
+    def test_returned_ValueError(self, fake_function):
+        """ the function must be retorned a ValueError """
+        
+        fake_function.side_effect = ValueError('ERROR: You must insert a numbers.')
+        
+        with self.assertRaises(ValueError) as context:
+            fake_function("")
+
+        self.assertEqual(str(context.exception), 'ERROR: You must insert a numbers.')
+        
 
 
 if __name__=="__main__":

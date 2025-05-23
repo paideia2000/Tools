@@ -5,11 +5,6 @@ from main import get_data_CREATETABLE
 
 class TestGet_data_CREATETABLE(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-
-        print("Inicializando las pruebas unitaria")
-    
     @patch("builtins.input")
     def test_return_str(self, mock_input):
         """Should return the name table when asking for table name"""
