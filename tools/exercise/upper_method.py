@@ -4,18 +4,27 @@
 def upper(DICT_UPPER: dict, PHRASE: str) -> str:
     """  Convert to upper the string """
 
+    import re
+    
     new_phrase: list = []
     
-    for c in PHRASE:
+    
+    if re.search(r"^[a-zA-Z]", PHRASE):
         
-        if c in DICT_UPPER.keys():
+        for c in PHRASE:
             
-            new_phrase.append(DICT_UPPER[c])
-            
-        else:
-            raise ValueError(f"The character '{c}' isin't American Character.") 
+            if c in DICT_UPPER.keys():
+                
+                new_phrase.append(DICT_UPPER[c])
+                
+            else:
+                raise ValueError(f"\nThe character '{c}' isin't American Character.") 
         
-    return "".join(new_phrase)
+    else:
+        print("cannot")
+    
+    
+    return "\n" + "".join(new_phrase) + "\n"
 
 def main():
     
