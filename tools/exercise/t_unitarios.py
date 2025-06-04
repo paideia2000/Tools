@@ -1,7 +1,5 @@
 import unittest
-from io import StringIO
 from unittest.mock import patch
-
 
 class Test_ex_1(unittest.TestCase):
     
@@ -22,7 +20,7 @@ class Test_ex_1(unittest.TestCase):
         argument = "renne"
 
         with self.assertRaises(ValueError) as vl:
-            result = sum_numb_list(argument)
+            sum_numb_list(argument)
             
             self.assertIsInstance(vl, str)
 
@@ -62,8 +60,6 @@ class Test_fibonacci(unittest.TestCase):
         with self.assertRaises(TypeError):
             
             self.assertEqual(suce_fibonacci(""), "ERROR: Please check the content of the varibales")
-
-
 
 class Test_Fcatorial_Recursive(unittest.TestCase):
     from factorial_recursive import factorial
