@@ -1,7 +1,7 @@
 
 
     
-def upper(DICT_UPPER: dict, PHRASE: str) -> str:
+def upper(alpha_characters: dict, PHRASE: str) -> str:
     """  Convert to upper the string """
 
     import re
@@ -13,9 +13,9 @@ def upper(DICT_UPPER: dict, PHRASE: str) -> str:
         
         for c in PHRASE:
             
-            if c in DICT_UPPER.keys():
+            if c in alpha_characters.keys():
                 
-                new_phrase.append(DICT_UPPER[c])
+                new_phrase.append(alpha_characters[c])
                 
             else:
                 raise ValueError(f"\nThe character '{c}' isin't American Character.") 
@@ -31,16 +31,13 @@ def main():
     
     PHRASE = "renecito el duro "
     
-    DICT_UPPER = {
-        'a': 'A', 'b': 'B', 'c': 'C', 'd': 'D', 'e': 'E', 'f': 'F', 'g': 'G',
-        'h': 'H', 'i': 'I', 'j': 'J', 'k': 'K', 'l': 'L', 'm': 'M', 'n': 'N',
-        'o': 'O', 'p': 'P', 'q': 'Q', 'r': 'R', 's': 'S', 't': 'T', 'u': 'U',
-        'v': 'V', 'w': 'W', 'x': 'X', 'y': 'Y', 'z': 'Z', ' ' : ' '
-    }
-    
+    indice_lower: list = [e for e in range(97, 123)]
+    indice_upper: list = [e for e in range(65, 91)]
+    alpha_characters = {chr(lower): chr(upper) for lower, upper in zip(indice_lower,indice_upper)}
+    alpha_characters[" "] = " ";
     
     try:
-        print(upper(DICT_UPPER, PHRASE))
+        print(upper(alpha_characters, PHRASE))
     except Exception as ex:
         print("An Error Ocurred: {}".format(ex))
         
