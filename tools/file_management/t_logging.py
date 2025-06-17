@@ -15,9 +15,9 @@ def log_error(PATH = "tools/file_management/log/logs.log"):
         format = ('%(asctime)s - %(levelname)s - %(message)s')
     )
     
-    def decorator(fun: object) -> object:
+    def decorator(fun: object) -> callable:
         @wraps(fun)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args, **kwargs) -> callable:
             
             try:
                 

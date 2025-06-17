@@ -11,7 +11,7 @@ class Interface(ABC):
 
 class CreateTableQuery(Interface):
     
-    def execute_query(self, conection, name_table: str, *args):
+    def execute_query(self, conection, name_table: str):
         try:
             with conection as conex:
                 cursor = conex.cursor()

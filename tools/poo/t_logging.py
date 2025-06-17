@@ -15,7 +15,7 @@ def log_debug(path_file="tools/poo/logs/logs.log"):
 
     def decorator(fun: callable) -> callable:
         @wraps(fun)
-        def wrapper(*args,**kwargs):
+        def wrapper(*args,**kwargs) -> callable:
             try:
                 
                 logging.debug(f"Entry into the function '{fun.__name__}' in the module '{fun.__module__}'")

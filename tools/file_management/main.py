@@ -76,7 +76,8 @@ def read_json(PATH_JSON) -> None:
         raise type(isa)(error_message) from isa
 
     except FileNotFoundError as fnf:
-            raise fnf
+            error_message =  str(fnf)
+            raise type(fnf)(error_message) from fnf
 
 def read_bin(PATH_BIN) -> None:
     """ get the content to the file .json """
@@ -102,13 +103,13 @@ def main():
     CONTENT = "Hello, World!"
     
     try:
-        pass
-        # create_file(PATH_TXT, CONTENT)
-        # write_json(PATH_JSON, CONTENT)
-        # write_bin(PATH_BIN, CONTENT)
-        # read_txt(PATH_TXT)
-        # read_json(PATH_JSON)
-        # read_bin(PATH_BIN)
+
+        create_file(PATH_TXT, CONTENT)
+        write_json(PATH_JSON, CONTENT)
+        write_bin(PATH_BIN, CONTENT)
+        read_txt(PATH_TXT)
+        read_json(PATH_JSON)
+        read_bin(PATH_BIN)
         
         
     except Exception as e:
