@@ -1,7 +1,8 @@
 import sys
 import pandas as pd
 from abc import ABC, abstractmethod
-from mysql.connector import Error
+from mysql import Error
+
 
 class Interface(ABC):
     
