@@ -39,8 +39,7 @@ def check_expression(expression: str) -> bool:
 
 
 def main():
-    
-    sample = {")": "(", "}": "{", "]": "["}
+
     
     expression = "{ [ a * ( c + d ) ] - 5 }"
     

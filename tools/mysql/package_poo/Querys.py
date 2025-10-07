@@ -32,7 +32,8 @@ class CreateTableQuery(Interface):
                 print(f"\nThe table '{name_table}' created succesfully.")
 
         except Error as er:
-            raise er
+            error_message = "Error: Trying stablish the conection"
+            raise type(er) (error_message) from er;
 
 class SelectQuery(Interface):
     
